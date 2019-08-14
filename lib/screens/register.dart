@@ -10,6 +10,8 @@ class _RegisterState extends State<Register> {
   Color nameColor = Color.fromARGB(0xFF, 0x55, 0x8b, 0x2f);
   Color emailColor = Colors.orange.shade900;
   Color passwordColor = Colors.blueGrey[700];
+  final formKey = GlobalKey<FormState>();
+  String nameString, emailString, passwordString;
 
   // Method
 
@@ -26,12 +28,19 @@ class _RegisterState extends State<Register> {
           size: 36.0,
           color: nameColor,
         ),
-      ),
+      ),validator: (String value){
+        if (value.isEmpty) {
+          return 'Please Fill Name in Blank';
+        }
+      },onSaved: (String value){
+        nameString = value;
+      },
     );
   }
 
   Widget emailText() {
     return TextFormField(
+      keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         labelText: 'Email :',
         labelStyle: TextStyle(color: emailColor),
@@ -43,7 +52,13 @@ class _RegisterState extends State<Register> {
           size: 36.0,
           color: emailColor,
         ),
-      ),
+      ),validator: (String value){
+        if (!((value.contains('@')) && (value.contains('.')))) {
+          return 'Please keep Email Format';
+        }
+      },onSaved: (String value){
+        emailString = value;
+      },
     );
   }
 
@@ -60,14 +75,25 @@ class _RegisterState extends State<Register> {
           size: 36.0,
           color: passwordColor,
         ),
-      ),
+      ),validator: (String value){
+        if (value.length < 6) {
+          return 'Please Type PassWord More 6 Charactor';
+        }
+      },onSaved: (String value){
+        passwordString = value;
+      },
     );
   }
 
   Widget registerButton() {
     return IconButton(
       icon: Icon(Icons.cloud_upload),
-      onPressed: () {},
+      onPressed: () {
+        if (formKey.currentState.validate()) {
+          formKey.currentState.save();
+          print('name = $nameString, email = $emailString, password = $passwordString');
+        }
+      },
     );
   }
 
@@ -79,15 +105,20 @@ class _RegisterState extends State<Register> {
         backgroundColor: Colors.pink[400],
         title: Text('Register'),
       ),
-      body: ListView(
-        padding: EdgeInsets.only(
-          top: 60.0,
-          left: 30.0,
-          right: 30.0,
+      body: Form(
+        key: formKey,
+        child: ListView(
+          padding: EdgeInsets.only(
+            top: 60.0,
+            left: 30.0,
+            right: 30.0,
+          ),
+          children: <Widget>[
+            nameText(),
+            emailText(),
+            passwordText(),
+          ],
         ),
-        children: <Widget>[
-          nameText(),emailText(),passwordText(),
-        ],
       ),
     );
   }
