@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ung_qr_code/screens/first_page.dart';
 import 'package:ung_qr_code/screens/home.dart';
+import 'package:ung_qr_code/screens/second_page.dart';
 
 class MyService extends StatefulWidget {
   @override
@@ -11,6 +13,7 @@ class _MyServiceState extends State<MyService> {
   // Explicit
   String nameLogin = '';
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  Widget myWidget = FirstPage();
 
   // Method
   @override
@@ -71,6 +74,9 @@ class _MyServiceState extends State<MyService> {
       title: Text('First Page'),
       subtitle: Text('นี่คือหน้าแสดง ListView'),
       onTap: () {
+        setState(() {
+          myWidget = FirstPage();
+        });
         Navigator.of(context).pop();
       },
     );
@@ -81,6 +87,9 @@ class _MyServiceState extends State<MyService> {
       leading: Icon(Icons.android),
       title: Text('Second Page'),
       onTap: () {
+        setState(() {
+          myWidget = SecondPage();
+        });
         Navigator.of(context).pop();
       },
     );
@@ -133,7 +142,7 @@ class _MyServiceState extends State<MyService> {
       appBar: AppBar(
         title: Text('My Service'),
       ),
-      body: Text('body'),
+      body: myWidget,
       drawer: myDrawer(),
     );
   }
