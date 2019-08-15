@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>764932610888-s5vk9ktk3fj015g6r91v8flf4t38vk6a.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.764932610888-s5vk9ktk3fj015g6r91v8flf4t38vk6a</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAGayUhi97X2RfqZ18gFSZVfZ4yziHF8ag</string>
+	<key>GCM_SENDER_ID</key>
+	<string>764932610888</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>th.in.androidthai.ungQrCode</string>
+	<key>PROJECT_ID</key>
+	<string>ungqrcodejwd</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ungqrcodejwd.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:764932610888:ios:281bc89a13aaf3bd</string>
+	<key>DATABASE_URL</key>
+	<string>https://ungqrcodejwd.firebaseio.com</string>
+</dict>
+</plist>
