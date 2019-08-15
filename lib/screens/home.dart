@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ung_qr_code/screens/my_service.dart';
 import 'package:ung_qr_code/screens/register.dart';
 
 class Home extends StatefulWidget {
@@ -12,6 +14,25 @@ class _HomeState extends State<Home> {
   Color myColor = Colors.blue[600];
 
   // Method
+
+  @override
+  void initState() {
+    super.initState();
+    checkStatus();
+  }
+
+  Future<void> checkStatus() async {
+    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    FirebaseUser firebaseUser = await firebaseAuth.currentUser();
+
+    if (firebaseUser != null) {
+      MaterialPageRoute materialPageRoute =
+          MaterialPageRoute(builder: (BuildContext context) => MyService());
+      Navigator.of(context).pushAndRemoveUntil(
+          materialPageRoute, (Route<dynamic> route) => false);
+    }
+  }
+
   Widget mySizeBox() {
     return SizedBox(
       width: 6.0,
